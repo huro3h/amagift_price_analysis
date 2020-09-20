@@ -1,7 +1,7 @@
-# require 'json'
-# require 'mechanize'
+require 'json'
+require 'mechanize'
 require 'active_record'
-# require 'slack-notifier'
+require 'slack-notifier'
 
 class Amagift
   include ActiveModel::Model

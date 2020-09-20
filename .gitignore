@@ -2,3 +2,4 @@
 .bundle/*
 .aws-sam
 packaged.yaml
+.idea

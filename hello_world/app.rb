@@ -1,5 +1,5 @@
-require "bundler/setup"
-Bundler.require
+# require "bundler/setup"
+# Bundler.require
 
 require './amagift.rb'
 
