@@ -1,0 +1,11 @@
+source "https://rubygems.org"
+
+gem 'httparty'
+gem 'json'
+
+gem 'mechanize'
+gem 'activerecord'
+gem 'slack-notifier'
+gem 'slack-ruby-client'
+
+ruby '~> 2.7.0'
