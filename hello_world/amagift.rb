@@ -25,7 +25,7 @@ class Amagift
 
   def set_attributes!
     @quantity, @ticket_value, @price = self.result[1].search('span.fl').map(&:text).map { |str| str.tr(',', '') }.map(&:to_i)
-    @discount_rate = (@price.to_f / @ticket_value.to_f) * PERCENTAGE
+    @discount_rate = calculate_discount_rate
     @expired_date = self.result[1].search('td.pc').text
 
     actual_trade = self.result[1].search('td').map(&:text)[6].tr("()", " ").strip
@@ -41,13 +41,18 @@ class Amagift
     text
   end
 
+  private
+
+  def calculate_discount_rate
+    return 0 unless @price && @ticket_value
+
+    rate = (@price.to_f / @ticket_value.to_f) * PERCENTAGE
+    rate.round(1)
+  end
+
   # return <Array> [Integer]
   # [1, 200000, 151800]
   # 販売枚数, 額面, 販売価格
-
-  # return <Float>
-  # 75.9
-  # discount_rate = (price.to_f / ticket_value.to_f) * PERCENTAGE
 
   # # return <Array>
   # # ["2030/09/13"]
